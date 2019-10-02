@@ -8,37 +8,37 @@ module.exports = {
 		'bundle.min.js': ['./src/index.js', './src/schedule.js'],
 		'bundle.min.css': ['./css/main.css', './css/header.css', './css/footer.css', './css/form.css', './css/course-card.css', './css/schedule.css']
 	},
-    output: {
-        path: path.resolve(__dirname, 'output'),
-        filename: '[name]',
-    },
-    module: {
-        rules: [{
-            test: /\.js$/,
-            exclude: /node_modules/,
-            use: {
-                loader: 'babel-loader',
-                options: {
-                    presets: ['babel-preset-env']
-                }
-            }
-        },{	
+	output: {
+		path: path.resolve(__dirname, 'output'),
+		filename: '[name]',
+	},
+	module: {
+		rules: [{
+		    test: /\.js$/,
+		    exclude: /node_modules/,
+		    use: {
+			loader: 'babel-loader',
+			options: {
+			    presets: ['babel-preset-env']
+			}
+		    }
+		},{	
 			test: /\.css$/,
-            use: [MiniCssExtractPlugin.loader, 'css-loader']
-        }]
-    },
+			use: [MiniCssExtractPlugin.loader, 'css-loader']
+        	}]
+    	},
 	resolve: {
-        extensions: ['.js', '.css']
-    },
+        	extensions: ['.js', '.css']
+    	},
 	devServer: {
 		port: '7000',
 		host: '127.0.0.1',
 		proxy: {
 			'/api': 'http://127.0.0.1:8000'
 		}
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
+    	},
+	plugins: [
+	new HtmlWebpackPlugin({
 			template: path.join(__dirname, 'index.html'),
 			filename: './index.html',
 			inject: true
@@ -63,5 +63,5 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: './bundle.min.css'
 		})
-    ]
+	]
 };
