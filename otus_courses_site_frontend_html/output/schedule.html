@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css"/>
+    <link type="text/css" href="css/main.css" rel="stylesheet"/>
+    <link type="text/css" href="css/header.css" rel="stylesheet"/>
+	<link type="text/css" href="css/footer.css" rel="stylesheet"/>
+	<link type="text/css" href="css/schedule.css" rel="stylesheet"/>
+    <title>Расписание занятий</title>
+<link href="./bundle.min.css" rel="stylesheet"><link href="bundle.min.css" rel="stylesheet"></head>
+<body>
+    <header class="header page__header">
+		<div class="container header__container">
+			<a class="header__logo" href="index.html">OTUS</a>
+			<a class="header__menu_item" href="courses.html">Курсы</a>
+			<a class="header__menu_item_left" href="schedule.html">Расписание занятий</a>
+			<a class="header__menu_item_right" href="login.html">Вход</a>
+			<a class="header__menu_item" href="registration.html">Регистрация</a>
+		</div>
+    </header>
+	<main>
+		<div class="container">
+			<h2 class="h">Расписание занятий</h2>
+			<div class="schedule">
+				<div class="schedule__courses">
+					<a class="schedule__courses__active">Разработчик JavaScript</a>
+					<a class="schedule__courses__inactive">Android-разработчик. Продвинутый курс</a>
+					<a class="schedule__courses__inactive">Разработчик C++</a>
+				</div>
+				<div class="schedule__lessons">
+					<div class="lesson-content">
+						<span class="lesson-content__date">27 Июня 2019 &nbsp; 20:00</span>
+						<p>Введение в курс Modern JavaScript Frameworks</p>
+					</div>
+					<div class="lesson-content">
+						<span class="lesson-content__date">4 Июля 2019 &nbsp; 20:00</span>
+						<p>Возможности современного JavaScript</p>
+					</div>
+					<div class="lesson-content">
+						<span class="lesson-content__date">8 Июля 2019 &nbsp; 20:00</span>
+						<p>Введение в Node-Пакетный менеджер NPM и возможности package.json</p>
+					</div>
+					<div class="lesson-content">
+						<span class="lesson-content__date">11 Июля 2019 &nbsp; 20:00</span>
+						<p>Test Driven Development с JavaScript</p>
+					</div>
+					<div class="lesson-content">
+						<span class="lesson-content__date">15 Июля 2019 &nbsp; 20:00</span>
+						<p>Основные концепции Node-Modules</p>
+					</div>
+					<div class="lesson-content">
+						<span class="lesson-content__date">18 Июля 2019 &nbsp; 20:00</span>
+						<p>Стандартная библиотека Node-EventLoop-Timers</p>
+					</div>
+					<div class="lesson-content">
+						<span class="lesson-content__date">22 Июля 2019 &nbsp; 20:00</span>
+						<p>Node Best Practices-Streams-Errors-Processes</p>
+					</div>
+				</div>
+			</div>
+	</main>	
+	<footer class="footer">
+		<span>&copy; 2019 OTUS Fake Site</span>
+	</footer>
+	<script type="text/javascript" src="src/schedule.js"></script>
+<script type="text/javascript" src="bundle.min.js"></script></body>
+</html>

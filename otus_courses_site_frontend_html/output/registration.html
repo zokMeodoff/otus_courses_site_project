@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css"/>
+    <link type="text/css" href="css/main.css" rel="stylesheet"/>
+    <link type="text/css" href="css/header.css" rel="stylesheet"/>
+	<link type="text/css" href="css/footer.css" rel="stylesheet"/>
+	<link type="text/css" href="css/form.css" rel="stylesheet"/>
+    <title>Регистрация</title>
+<link href="./bundle.min.css" rel="stylesheet"><link href="bundle.min.css" rel="stylesheet"></head>
+<body>
+   <header class="header page__header">
+		<div class="container header__container">
+			<a class="header__logo" href="index.html">OTUS</a>
+			<a class="header__menu_item" href="courses.html">Курсы</a>
+			<a class="header__menu_item_left" href="schedule.html">Расписание занятий</a>
+			<a class="header__menu_item_right" href="login.html">Вход</a>
+			<a class="header__menu_item" href="registration.html">Регистрация</a>
+		</div>
+    </header>
+    <main>
+        <div class="registration">
+            <div class="container">
+                <h2 class="h h_center">Зарегистрируйте свой аккаунт</h2>
+                <div class="row row_justify_center">
+                    <div class="form registration__form">
+                        <form>
+							<div class="row row_justify_center">
+                                <div class="form__field">
+                                    <label for="username" class="form__label form__label_bold">Имя пользователя</label>
+                                    <input type="text" name="username" maxLength="150" autoFocus required class="form__input"/>
+                                </div>
+                            </div>
+							<div class="row row_justify_center">
+                                <div class="form__field">
+                                    <label for="first_name" class="form__label form__label_bold">Имя</label>
+                                    <input type="text" name="first_name" maxLength="150" class="form__input"/>
+                                </div>
+                            </div>
+							<div class="row row_justify_center">
+                                <div class="form__field">
+                                    <label for="last_name" class="form__label form__label_bold">Фамилия</label>
+                                    <input type="text" name="last_name" maxLength="150" class="form__input"/>
+                                </div>
+                            </div>
+							<div class="row row_justify_center">
+                                <div class="form__field">
+                                    <label for="email" class="form__label form__label_bold">E-mail</label>
+                                    <input type="email" name="email" maxLength="150" class="form__input"/>
+                                </div>
+                            </div>
+							<div class="row row_justify_center">
+                                <div class="form__field">
+                                    <label for="password1" class="form__label form__label_bold">Пароль</label>
+                                    <input type="password" name="password1" maxLength="150" required class="form__input"/>
+                                </div>
+                            </div>
+							<div class="row row_justify_center">
+                                <div class="form__field">
+                                    <label for="password2" class="form__label form__label_bold">Подтверждение пароля</label>
+                                    <input type="password" name="password2" maxLength="150" required class="form__input"/>
+                                </div>
+                            </div>
+                            <div class="row row_justify_center">
+                                <input type="submit" value="Зарегистрироваться" class="form__button"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+	<footer class="footer">
+		<span>&copy; 2019 OTUS Fake Site</span>
+    </footer>
+<script type="text/javascript" src="bundle.min.js"></script></body>
+</html>

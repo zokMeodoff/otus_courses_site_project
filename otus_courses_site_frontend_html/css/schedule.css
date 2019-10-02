@@ -1,0 +1,60 @@
+.schedule {
+	position: relative; 
+	display: flex;
+	flex-direction: row;
+	justify-content: stretch;
+}
+
+.schedule__courses {
+	width: 350px;
+	background-color: #ffffff;
+	line-height: 26px;
+	vertical-align: baseline;
+	display: block;
+	font-size: 20px;
+	align-self: flex-start;
+}
+
+.schedule__courses__active {
+	display: block;
+	width: 100%;
+	padding: 25px 15px 25px 20px;
+	cursor: pointer;
+	font-size: 20px;
+	font-weight: bold;
+	background-color: #ffffff;
+	box-sizing: border-box;
+	word-break: break-word;
+	border-bottom: 1px solid #ffffff;
+}
+
+.schedule__courses__inactive {
+	display: block;
+	width: 100%;
+	padding: 25px 15px 25px 20px;
+	cursor: pointer;
+	font-size: 20px;
+	font-weight: bold;
+	background-color: #6a5acd;
+	box-sizing: border-box;
+	word-break: break-word;
+	border-bottom: 1px solid #ffffff;
+	color: #ffffff;
+}
+
+.schedule__lessons {
+	display: block;
+	padding: 0 10px;
+	background-color: #ffffff;
+	flex: 1;
+}
+
+.lesson-content {
+	max-width: 970px;
+	padding: 10px;
+	border-bottom: 2px solid #d8d8d8;
+}
+
+.lesson-content__date {
+	font-weight: bold;
+}
