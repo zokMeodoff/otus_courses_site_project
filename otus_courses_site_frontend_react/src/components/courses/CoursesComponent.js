@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import CourseCard from './CourseCard'
+import React, { Component } from 'react';
+import CourseCard from './CourseCard';
 
-import axios from 'axios';
+import AxiosService from "../../services/AxiosService"
 
 class CoursesComponent extends Component {
     constructor(props) {
@@ -15,16 +15,23 @@ class CoursesComponent extends Component {
     }
 
     async componentDidMount() {
-        let courses = await axios.get('/api/courses');
-        this.setState({courses: courses, loaded: true})
+        try {
+            let response = await AxiosService.get('/api/courses');
+            if (response.status === 200) {
+                this.setState({courses: response, loaded: true})
+            }
+        } catch (errors) {
+        	this.setState({errors: errors.response.data['errors']})
+            alert(errors.response.data['errors']);
+        }
     }
 
     render() {
         if (this.state.loaded) {
             return (
-		<div className="container">
-			<h2 className="h">Популярные курсы</h2>
-			<div className="row row_justify_space-between">
+            	<div className="container">
+				    <h2 className="h">Популярные курсы</h2>
+				    <div className="row row_justify_space-between">
                         {
                             this.state.courses.map((course) =>
                                 <CourseCard

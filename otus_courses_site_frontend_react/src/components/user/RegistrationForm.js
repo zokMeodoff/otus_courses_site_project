@@ -1,12 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {Redirect} from "react-router-dom";
-import './Form.css'
-import Form from './Form'
+import './Form.css';
+import Form from './Form';
 
-import axios from 'axios';
-
-axios.defaults.xsrfCookieName = 'csrftoken';
-axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
+import AxiosService from "../../services/AxiosService"
 
 class RegistrationForm extends Component {
     constructor(props) {
@@ -22,14 +19,6 @@ class RegistrationForm extends Component {
             registeredSuccess: false,
             errors: []
         }
-
-        this.handleUsernameChanged = this.handleUsernameChanged.bind(this);
-        this.handleFirstNameChanged = this.handleFirstNameChanged.bind(this);
-        this.handleLastNameChanged = this.handleLastNameChanged.bind(this);
-        this.handleEmailChanged = this.handleEmailChanged.bind(this);
-        this.handlePasswordChanged = this.handlePasswordChanged.bind(this);
-        this.handlePasswordConfirmedChanged = this.handlePasswordConfirmedChanged.bind(this);
-        this.handleDoRegister = this.handleDoRegister.bind(this);
     }
 
     handleUsernameChanged = (event) => {
@@ -62,7 +51,7 @@ class RegistrationForm extends Component {
         if (this.state.password !== this.state.passwordConfirmed) {
             alert('Неверно введено подтверждение пароля!');
         } else {
-            axios.post('/api/register/', {
+            AxiosService.post('/api/register/', {
                 "username": this.state.username,
                 "firstName": this.state.firstName,
                 "lastName": this.state.lastName,

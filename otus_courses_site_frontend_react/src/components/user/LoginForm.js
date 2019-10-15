@@ -1,12 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {Redirect} from "react-router-dom";
-import './Form.css'
-import Form from './Form'
+import './Form.css';
+import Form from './Form';
+import {doLogin} from "../../actions/LoginAction";
 
-import axios from 'axios';
-
-axios.defaults.xsrfCookieName = 'csrftoken';
-axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
+import AxiosService from "../../services/AxiosService"
 
 class LoginForm extends Component {
     constructor(props) {
@@ -18,10 +16,6 @@ class LoginForm extends Component {
             loggedIn: false,
             errors: []
         }
-
-        this.handleUsernameChanged = this.handleUsernameChanged.bind(this);
-        this.handlePasswordChanged = this.handlePasswordChanged.bind(this);
-        this.handleDoLogin = this.handleDoLogin.bind(this);
     }
 
     handleUsernameChanged = (event) => {
@@ -33,12 +27,15 @@ class LoginForm extends Component {
     };
 
     handleDoLogin = (event) => {
+        const {dispatch} = this.props;
+
         event.preventDefault();
-        axios.post('/api/login/', {
+        AxiosService.post('/api/login/', {
             "username": this.state.username,
             "password": this.state.password
         }).then(response => {
                     this.setState({loggedIn: true})
+                    dispatch(doLogin(response.data.type));
                 }
             ).catch(errors => {
                 if (errors.response) {

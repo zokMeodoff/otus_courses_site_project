@@ -1,0 +1,10 @@
+.schedule__table {
+    width: 100%;
+    border-spacing: 0;
+    text-align: left;
+}
+
+.schedule__table_row_cell {
+    border-top: 1px solid #C0C0C0;
+    padding: 7px 0;
+}
