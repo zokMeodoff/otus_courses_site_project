@@ -108,6 +108,20 @@ $ npm install
 $ npm start
 ```
 
+### **Фронтенд: landing page для сайта с курсами на Vue**
+
+```консоль
+Получение исходного кода:
+$ git clone https://github.com/zokMeodoff/otus_courses_site_project.git
+
+Установка необходимых зависимостей:
+$ cd otus_courses_site_project/otus_courses_site_frontend_vue/
+$ npm install
+
+Запуск:
+$ npm run serve
+```
+
 
 
 
