@@ -36,14 +36,14 @@ def user_data_register():
 
 @pytest.mark.django_db
 def test_register_view_get():
-    response_from_url = client.get('/users/')
+    response_from_url = client.get('/api/users/')
     assert response_from_url.status_code == 405
 
 
 @pytest.mark.django_db
 def test_register_success(user_data_register):
     request_json = json.dumps(user_data_register)
-    response_from_url = client.post('/users/', data=request_json, content_type='application/json')
+    response_from_url = client.post('/api/users/', data=request_json, content_type='application/json')
 
     user = User.objects.first()
 
@@ -59,7 +59,7 @@ def test_register_success(user_data_register):
 def test_register_fail_without_password(user_data_register):
     del user_data_register['password']
     request_json = json.dumps(user_data_register)
-    response_from_url = client.post('/users/', data=request_json, content_type='application/json')
+    response_from_url = client.post('/api/users/', data=request_json, content_type='application/json')
 
     assert response_from_url.status_code == 400
 
@@ -68,7 +68,7 @@ def test_register_fail_without_password(user_data_register):
 def test_register_fail_without_username(user_data_register):
     del user_data_register['username']
     request_json = json.dumps(user_data_register)
-    response_from_url = client.post('/users/', data=request_json, content_type='application/json')
+    response_from_url = client.post('/api/users/', data=request_json, content_type='application/json')
 
     assert response_from_url.status_code == 400
 
@@ -81,7 +81,7 @@ def test_register_fail_long_username():
         'email': 'newtestuser@email.com',
     }
     request_json = json.dumps(request)
-    response_from_url = client.post('/users/', data=request_json, content_type='application/json')
+    response_from_url = client.post('/api/users/', data=request_json, content_type='application/json')
 
     assert response_from_url.status_code == 400
 
@@ -94,7 +94,7 @@ def test_register_fail_long_password():
         'email': 'newtestuser@email.com',
     }
     request_json = json.dumps(request)
-    response_from_url = client.post('/users/', data=request_json, content_type='application/json')
+    response_from_url = client.post('/api/users/', data=request_json, content_type='application/json')
 
     assert response_from_url.status_code == 400
 
@@ -109,7 +109,7 @@ def test_register_fail_long_first_name():
         'last_name': 'User',
     }
     request_json = json.dumps(request)
-    response_from_url = client.post('/users/', data=request_json, content_type='application/json')
+    response_from_url = client.post('/api/users/', data=request_json, content_type='application/json')
 
     assert response_from_url.status_code == 400
 
@@ -122,7 +122,7 @@ def test_register_fail_empty_username():
         'email': 'newtestuser@email.com',
     }
     request_json = json.dumps(request)
-    response_from_url = client.post('/users/', data=request_json, content_type='application/json')
+    response_from_url = client.post('/api/users/', data=request_json, content_type='application/json')
 
     assert response_from_url.status_code == 400
 
@@ -135,7 +135,7 @@ def test_register_fail_empty_password():
         'email': 'newtestuser@email.com',
     }
     request_json = json.dumps(request)
-    response_from_url = client.post('/users/', data=request_json, content_type='application/json')
+    response_from_url = client.post('/api/users/', data=request_json, content_type='application/json')
 
     assert response_from_url.status_code == 400
 
@@ -148,7 +148,7 @@ def test_register_fail_incorrect_email():
         'email': 'newtestuseremail.com',
     }
     request_json = json.dumps(request)
-    response_from_url = client.post('/users/', data=request_json, content_type='application/json')
+    response_from_url = client.post('/api/users/', data=request_json, content_type='application/json')
 
     assert response_from_url.status_code == 400
 
@@ -158,7 +158,7 @@ def test_register_fail_empty_request():
     request = {
     }
     request_json = json.dumps(request)
-    response_from_url = client.post('/users/', data=request_json, content_type='application/json')
+    response_from_url = client.post('/api/users/', data=request_json, content_type='application/json')
 
     assert response_from_url.status_code == 400
 
@@ -174,7 +174,7 @@ def test_login_success():
     user = User.objects.get(username='TestUser')
 
     request_json = json.dumps(request)
-    response_from_url = client.post('/users/login/', data=request_json, content_type='application/json')
+    response_from_url = client.post('/api/users/login/', data=request_json, content_type='application/json')
 
     assert response_from_url.status_code == 200
     assert user.is_authenticated is True
@@ -189,7 +189,7 @@ def test_login_wrong_password():
     }
 
     request_json = json.dumps(request)
-    response_from_url = client.post('/users/login/', data=request_json, content_type='application/json')
+    response_from_url = client.post('/api/users/login/', data=request_json, content_type='application/json')
 
     assert response_from_url.status_code == 400
 
@@ -203,7 +203,7 @@ def test_login_wrong_username():
     }
 
     request_json = json.dumps(request)
-    response_from_url = client.post('/users/login/', data=request_json, content_type='application/json')
+    response_from_url = client.post('/api/users/login/', data=request_json, content_type='application/json')
 
     assert response_from_url.status_code == 400
 
@@ -216,7 +216,7 @@ def test_login_without_password():
     }
 
     request_json = json.dumps(request)
-    response_from_url = client.post('/users/login/', data=request_json, content_type='application/json')
+    response_from_url = client.post('/api/users/login/', data=request_json, content_type='application/json')
 
     assert response_from_url.status_code == 400
 
@@ -229,6 +229,6 @@ def test_login_without_username():
     }
 
     request_json = json.dumps(request)
-    response_from_url = client.post('/users/login/', data=request_json, content_type='application/json')
+    response_from_url = client.post('/api/users/login/', data=request_json, content_type='application/json')
 
     assert response_from_url.status_code == 400

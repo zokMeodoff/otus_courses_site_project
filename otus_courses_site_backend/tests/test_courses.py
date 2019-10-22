@@ -31,8 +31,8 @@ def test_one_course_view():
     user = User.objects.create_superuser('TestUser1111', 'admin@admin.ru', 'admin123')
     token = Token.objects.create(user=user)
 
-    response_from_url = client.get('/courses/1/', HTTP_AUTHORIZATION='Token {}'.format(token)).content
-    request = request_factory.get('/courses/1/')
+    response_from_url = client.get('/api/courses/1/', HTTP_AUTHORIZATION='Token {}'.format(token)).content
+    request = request_factory.get('/api/courses/1/')
     serializer_context = {
         'request': Request(request),
     }
@@ -49,8 +49,8 @@ def test_course_list_view():
     user = User.objects.create_superuser('TestUser1111', 'admin@admin.ru', 'admin123')
     token = Token.objects.create(user=user)
 
-    response_from_url = client.get('/courses/', HTTP_AUTHORIZATION='Token {}'.format(token)).content
-    request = request_factory.get('/courses/')
+    response_from_url = client.get('/api/courses/', HTTP_AUTHORIZATION='Token {}'.format(token)).content
+    request = request_factory.get('/api/courses/')
     serializer_context = {
         'request': Request(request),
     }
@@ -67,7 +67,7 @@ def test_course_signup_success():
     token = Token.objects.create(user=user)
 
     client.force_login(user=user)
-    request_uri = '/courses/signup/{}/'.format(course.id)
+    request_uri = '/api/courses/signup/{}/'.format(course.id)
     response_from_url = client.patch(request_uri, HTTP_AUTHORIZATION='Token {}'.format(token))
     response_json = json.loads(response_from_url.content.decode('utf-8'))
     assert response_json['title'] == course.title
@@ -81,7 +81,7 @@ def test_course_signup_fail_no_such_course():
     token = Token.objects.create(user=user)
 
     client.force_login(user=user)
-    request_uri = '/courses/signup/15/'
+    request_uri = '/api/courses/signup/15/'
     response_from_url = client.post(request_uri, HTTP_AUTHORIZATION='Token {}'.format(token))
     assert response_from_url.status_code == 404
 
@@ -90,7 +90,7 @@ def test_course_signup_fail_no_such_course():
 def test_course_signup_fail_unauthorized_user():
     course = create_test_course()
 
-    request_uri = '/courses/signup/{}/'.format(course.id)
+    request_uri = '/api/courses/signup/{}/'.format(course.id)
     response_from_url = client.post(request_uri)
     assert response_from_url.status_code == 401
 
