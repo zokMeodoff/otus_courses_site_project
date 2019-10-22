@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './CourseCard.css';
 
 class CourseCard extends Component {
-    render() {
+    render = () => {
         const {course} = this.props;
         return (
             <div className="course-card">

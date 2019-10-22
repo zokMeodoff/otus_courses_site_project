@@ -15,17 +15,18 @@ class ScheduleComponent extends React.Component {
     }
 
     handleSortChanged  = (event) => {
-        const lessons = this.state.lessons
+        const lessons = this.state.lessons;
+        let lessonsToShow;
         if (event.target.value === 'courseName') {
-            lessons.sort((a, b) => a.courseName > b.courseName ? 1 : -1)
+            lessonsToShow = lessons.sort((a, b) => a.courseName > b.courseName ? 1 : -1)
         }
         else if (event.target.value === 'lesson') {
-            lessons.sort((a, b) => a.name > b.name ? 1 : -1)
+            lessonsToShow = lessons.sort((a, b) => a.name > b.name ? 1 : -1)
         }
         else if (event.target.value === 'date') {
-            lessons.sort((a, b) => a.date > b.date ? 1 : -1)
+            lessonsToShow = lessons.sort((a, b) => a.date > b.date ? 1 : -1)
         }
-        this.setState({lessons: lessons})
+        this.setState({lessons: lessonsToShow})
     }
 
     async componentDidMount() {
